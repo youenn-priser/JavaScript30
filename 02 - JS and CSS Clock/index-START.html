@@ -62,12 +62,37 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+    }
+    .second-hand {
+      height: 2px;
     }
 
   </style>
 
   <script>
-
+  const setDate = () => {
+    const now = new Date();
+    // Updating seconds
+    const seconds = now.getSeconds();
+    const secondsDegrees = ((seconds / 60) * 360) + 90;
+    const secondsHand = document.querySelector('.second-hand');
+    secondsHand.style.transform = `rotate(${secondsDegrees}deg)`;
+    // Updating minutes
+    const mins = now.getMinutes();
+    const minsDegrees = ((mins / 60) * 360) + 90;
+    const minsHand = document.querySelector('.min-hand');
+    minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+    // Updating hour
+    const hour = now.getHours();
+    const hourDegrees = ((hour / 12) * 360) + 90;
+    const hourHand = document.querySelector('.hour-hand');
+    hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+  }
+  //running the update every 1 second
+  setInterval(setDate, 1000);
+  setDate();
 
   </script>
 </body>
