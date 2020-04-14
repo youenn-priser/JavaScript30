@@ -33,7 +33,6 @@
   const suggestions = document.querySelector('.suggestions');
   function insertSuggestions() {
     const filteredCities = filterCities(this.value, cities)
-    console.table(filteredCities);
     const html = filteredCities.map(place => {
       const regex = new RegExp(this.value, 'gi');
       const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
